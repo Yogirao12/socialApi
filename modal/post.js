@@ -8,14 +8,18 @@ const postschema=new mongoose.Schema({
     },
     user:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:'user'
+        ref:'User'
     },
     comment:[
         {
             type:mongoose.Schema.Types.ObjectId,
-            ref:'comment'
+            ref:'Comment'
         }
-    ]
+    ],
+    like:[{
+        type:mongoose.Schema.Types.ObjectId,
+            ref:'Like'
+    }]
 },{timestamps:true});
-const post =mongoose.model('post', postschema);
-module.exports=post;
+const Post =mongoose.model('Post', postschema);
+module.exports=Post;

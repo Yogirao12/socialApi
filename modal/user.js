@@ -14,9 +14,14 @@ const userschema= new mongoose.Schema({
     name: {
         type: String,
         required:true,
-    }
+    },
+    friend:[{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"Friend"
+    }]
 },{
     timestamps:true
 });
-const user =mongoose.model("user",userschema);
-module.exports =user;
+
+const User =mongoose.model("User",userschema);
+module.exports =User;
