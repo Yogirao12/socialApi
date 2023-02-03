@@ -8,11 +8,11 @@ const commentschema=new mongoose.Schema({
     },
     user:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:'user'
+        ref:'User'
     },
     post:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:'post'
+        ref:'Post'
     }
     
 },{timestamps:true});
