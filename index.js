@@ -1,26 +1,25 @@
-const express= require("express");
-const app=express();
-const path=require("path");
-const db=require("./confi/mongoose");
-const passport=require("passport");
-const jwt=require("./confi/passportjwt");
+const express = require("express");
+const app = express();
+const path = require("path");
+const db = require("./confi/mongoose");
+const passport = require("passport");
+const jwt = require("./confi/passportjwt");
+const PORT = 8000;
 
-
-
-const PORT=8000;
-
+// ---------- FOR READING REQUEST BODY DATA -------------------
 app.use(express.urlencoded());
+
+// ---------------- FOR AUTHENTICATION BY PASSPORTJS-------------
 app.use(passport.initialize());
 
+// -------------------- FOR ROUTERS USE -----------------------
+app.use("/", require("./routers"));
 
-
-app.use("/",require("./routers"));
-
-
-app.listen(PORT,function(err){
-    if(err){
-        console.log(err);
-        return;
-    }
-    console.log("app is listening on ",PORT);
-})
+// ------------------ STARTING THE SERVER ON PARTICULAR PORT----------------------
+app.listen(PORT, function (err) {
+  if (err) {
+    console.log(err);
+    return;
+  }
+  console.log("app is listening on ", PORT);
+});

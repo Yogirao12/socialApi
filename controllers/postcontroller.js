@@ -1,5 +1,6 @@
 const postmodal = require("../modal/post");
 
+// -------------- CREATING NEW POST ----------------------
 module.exports.createPost = async function (req, res) {
   try {
     const post = await postmodal.create({
@@ -9,7 +10,7 @@ module.exports.createPost = async function (req, res) {
 
     if (post) {
       return res.status(200).json({
-        message: "post created successfully",
+        message: "Post Created Successfully!",
         success: true,
         data: {
           post: post,
@@ -17,18 +18,20 @@ module.exports.createPost = async function (req, res) {
       });
     } else {
       return res.status(422).json({
-        message: "post not created",
+        message: "Post Not Created !",
         success: false,
       });
     }
   } catch (err) {
     console.log(err);
     return res.status(400).json({
-      message: "something error",
+      message: "Something Error !",
       success: false,
     });
   }
 };
+
+// ---------------- REMOVING POST -------------------
 module.exports.removePost = async function (req, res) {
   try {
     const post = await postmodal.findById(req.query.id);
@@ -40,13 +43,13 @@ module.exports.removePost = async function (req, res) {
       console.log(req.user.id, "req user id");
       if (post.user._id.toString() !== req.user.id) {
         return res.status(422).json({
-          message: "only  owner can delete post",
+          message: "Only  Owner Can Delete Post!",
           success: false,
         });
       }
       post.remove();
       return res.status(200).json({
-        message: "post removed successfully",
+        message: "Post Removed Successfully!",
         success: true,
         data: {
           post: post,
@@ -54,14 +57,14 @@ module.exports.removePost = async function (req, res) {
       });
     } else {
       return res.status(422).json({
-        message: "post not deleted",
+        message: "Post Not Deleted!",
         success: false,
       });
     }
   } catch (err) {
     console.log(err);
     return res.status(400).json({
-      message: "something error",
+      message: "Something Error!",
       success: false,
     });
   }
