@@ -35,12 +35,9 @@ module.exports.createPost = async function (req, res) {
 module.exports.removePost = async function (req, res) {
   try {
     const post = await postmodal.findById(req.query.id);
-    console.log("query:", req.query.id);
-    console.log("query post:", post);
-    console.log("req.user :", req.user);
+   
     if (post) {
-      console.log(post.user._id.toString(), "post user id ");
-      console.log(req.user.id, "req user id");
+      
       if (post.user._id.toString() !== req.user.id) {
         return res.status(422).json({
           message: "Only  Owner Can Delete Post!",
@@ -62,7 +59,7 @@ module.exports.removePost = async function (req, res) {
       });
     }
   } catch (err) {
-    console.log(err);
+    
     return res.status(400).json({
       message: "Something Error!",
       success: false,
