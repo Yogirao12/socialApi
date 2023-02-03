@@ -1,4 +1,5 @@
 const passport= require('passport');
+const User=require('../modal/user');
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 const opts = {}
@@ -11,6 +12,7 @@ passport.use(new JwtStrategy(opts, function(jwt_payload, done) {
             return done(err, false);
         }
         if (user) {
+            console.log("confi",user);
             return done(null, user);
         } else {
             return done(null, false);

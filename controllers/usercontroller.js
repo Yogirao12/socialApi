@@ -39,11 +39,13 @@ exports.createsession=async function(req,res){
             success:false
         })
        }
+       console.log("userrrrrrr", req.user)
       return res.status(200).json({
         message:"successfully logged in",
         success:true,
         data:{
-            token:jwt.sign(user.toJSON(),"secret",{expiresIn:"10000000000000"})
+            token:jwt.sign(user.toJSON(),"secret",{expiresIn:"10000000000000"}),
+           
             
         }
       })

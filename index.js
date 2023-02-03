@@ -3,6 +3,7 @@ const app=express();
 const path=require("path");
 const db=require("./confi/mongoose");
 const passport=require("passport");
+const jwt=require("./confi/passportjwt");
 
 
 
