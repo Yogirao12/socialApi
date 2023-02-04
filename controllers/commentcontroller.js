@@ -48,7 +48,8 @@ module.exports.removeComment=async function(req, res){
         if(comment){
             const post=await postmodal.findById(comment.post);
             if(post){
-                if(post.user._id.toString()==comment.user._id.toString()||comment.user._id.toString()==req.user.id){
+                
+                if(post.user._id.toString()==req.user.id||comment.user._id.toString()==req.user.id){
                     await postmodal.findByIdAndUpdate(comment.post,{$pull:{comment:req.query.id}});
                      
                     comment.remove();

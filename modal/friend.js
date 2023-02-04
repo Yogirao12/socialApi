@@ -13,5 +13,5 @@ const friendschema = new mongoose.Schema({
 
 })
 
-const Friend=mongoose.modal("Friend",friendschema);
+const Friend=mongoose.model("Friend",friendschema);
 module.exports=Friend;
