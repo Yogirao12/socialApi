@@ -13,7 +13,6 @@ passport.use(
         return done(err, false);
       }
       if (user) {
-        console.log("confi", user);
         return done(null, user);
       } else {
         return done(null, false);
