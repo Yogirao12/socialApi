@@ -6,7 +6,7 @@ const passport=require("passport");
 router.post("/newuser",usercontroller.newuser);
 
 router.post("/create-session",usercontroller.createsession);
-
+router.get("/profile",usercontroller.profile);
 
 
 module.exports=router;

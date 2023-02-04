@@ -1,4 +1,6 @@
 const Usermodal = require("../modal/user");
+const postmodal = require("../modal/post");
+const friendmodal = require("../modal/friend");
 const jwt = require("jsonwebtoken");
 
 // ------------------ CREATING NEW USER -----------------
@@ -57,3 +59,28 @@ exports.createsession = async function (req, res) {
     });
   }
 };
+
+/*************      PROFILE SECTION         **************/
+ module.exports.profile=async function(req,res){
+      try{
+      const user=await Usermodal.findById(req.query.id).select("-password");
+      const friend=await friendmodal.find({user:req.query.id});
+      const post=await postmodal.find({user:req.query.id});
+      return res.status(200).json({
+        message:`${user.name} Profile View`,
+        success:true,
+        data:{
+          user:user,
+          friends:friend,
+          posts:post
+        }
+      })
+      }
+      catch(err){
+        console.log(err);
+    return res.status(400).json({
+      message: "Something Error !",
+      success: false,
+    });
+      }
+ }
