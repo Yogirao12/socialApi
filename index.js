@@ -4,8 +4,9 @@ const path = require("path");
 const db = require("./confi/mongoose");
 const passport = require("passport");
 const jwt = require("./confi/passportjwt");
+const cors=require("cors");
 const PORT = 8000;
-
+app.use(cors());
 // ---------- FOR READING REQUEST BODY DATA -------------------
 app.use(express.urlencoded());
 
